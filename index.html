@@ -4,296 +4,127 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lunaris Clan — Standoff 2</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #111827, #1e293b);
-      color: #f1f5f9;
-      scroll-behavior: smooth;
-      background-attachment: fixed;
-    }
-
-    header, section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-      animation: fadeIn 1s ease-out;
-    }
-
-    h1, h2 {
-      text-align: center;
-      color: #e2e8f0;
-      font-weight: 600;
-      margin-bottom: 20px;
-      font-size: 24px;
-    }
-
-    .logo {
-      text-align: center;
-      font-size: 48px;
-      color: #ffffff;
-      margin-bottom: 20px;
-      text-shadow: 0 0 15px #3b82f6;
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #2563eb; }
-      to { text-shadow: 0 0 20px #3b82f6, 0 0 30px #60a5fa; }
-    }
-
-    .achievement, .tip, .member, .comment {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
-    }
-
-    .achievement:hover, .tip:hover, .member:hover {
-      transform: translateY(-5px);
-    }
-
-    .members {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 15px;
-      flex-wrap: wrap;
-    }
-
-    .member {
-      width: 150px;
-      text-align: center;
-      position: relative;
-    }
-
-    .member img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 3px solid #94a3b8;
-      object-fit: cover;
-    }
-
-    .leader img {
-      border: 3px solid gold !important;
-    }
-
-    .leader::after {
-      content: "👑";
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      font-size: 20px;
-    }
-
-    .btn {
-      background: #3b82f6;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      margin: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      box-shadow: 0 6px 16px rgba(59,130,246,0.4);
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .btn:hover {
-      background: #60a5fa;
-      transform: translateY(-2px);
-    }
-
-    .btn img {
-      width: 18px;
-      height: 18px;
-    }
-
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    .socials img {
-      width: 60px;
-      height: 60px;
-      transition: transform 0.3s, filter 0.3s;
-      filter: drop-shadow(0 0 6px #3b82f6);
-    }
-
-    .socials img:hover {
-      transform: scale(1.15);
-      filter: drop-shadow(0 0 10px #60a5fa);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Медиазапросы для улучшения адаптивности */
-    @media (max-width: 1200px) {
-      header, section {
-        padding: 30px 20px;
-      }
-
-      .logo {
-        font-size: 40px;
-      }
-
-      h1, h2 {
-        font-size: 22px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .logo {
-        font-size: 36px;
-      }
-
-      h1, h2 {
-        font-size: 20px;
-      }
-
-      .members {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .member {
-        width: 140px;
-      }
-
-      .btn {
-        font-size: 14px;
-        padding: 10px 20px;
-      }
-
-      .socials {
-        gap: 20px;
-      }
-
-      .socials img {
-        width: 50px;
-        height: 50px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      header, section {
-        padding: 20px;
-      }
-
-      .logo {
-        font-size: 32px;
-      }
-
-      h1, h2 {
-        font-size: 18px;
-      }
-
-      .btn {
-        width: 100%;
-        font-size: 16px;
-        padding: 12px;
-      }
-
-      .members {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .socials {
-        gap: 15px;
-      }
-
-      .socials img {
-        width: 40px;
-        height: 40px;
-      }
-    }
-
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<header>
-  <div class="logo">👑 Lunaris</div>
-  <p style="text-align:center; max-width: 600px; margin: auto; font-size: 18px;">
-   Мы — клан Lunaris. Играть на победу — наша цель, каждый матч — шаг к успеху.
-  </p>
-</header>
-
-<section>
-  <h2>🏆 Достижения</h2>
-  <div class="achievement">1 место на турнире MoonCup 2024</div>
-  <div class="achievement">Лучший снайпер сезона — MoonStriker</div>
-</section>
-
-<section>
-  <h2>🎯 Главный состав клана</h2>
-  <div class="members">
-    <div class="member leader">
-      <div><strong><a href="https://t.me/imroman23" target="_blank">🫅kenny</a></strong><br/>Leader 1️⃣</div>
-    </div>
-    <div class="member leader">
-      <div><strong><a href="https://t.me/ikona_freak" target="_blank">🫅ikona</a></strong><br/>Leader 2️⃣</div>
+<!-- Приветствие -->
+<div id="welcome-screen">
+  <div class="welcome-content">
+    <h1>👋 Добро пожаловать на сайт клана 𝐿𝓊𝓃𝒶𝓇𝒾𝓈</h1>
+    <h2>👋 Welcome to the 𝐿𝓊𝓃𝒶𝓇𝒾𝓈 clan website</h2>
+    <h3>Выберите удобный язык для вас 😊</h3>
+    <h4>Choose a language 😊</h4>
+    <div class="language-buttons">
+      <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
+      <button onclick="setLanguage('en')">🇺🇸 English</button>
     </div>
   </div>
-</section>
+</div>
 
-<section>
-  <h2>📥 Как вступить в Lunaris?</h2>
-  <div class="tip">
-    <p><strong>Требования для вступления:</strong></p>
-    <ul>
-      <li>Ранг от Ренджера</li>
-      <li>Реальный возраст от 14 лет (возможны исключения)</li>
-      <li>Адекватность, сдержанность, грамотная письменная речь</li>
-      <li>Стабильный онлайн</li>
-      <li>Telegram и рабочий микрофон</li>
-    </ul>
-  </div>
+<!-- Основной контент -->
+<div id="site-content" style="display: none;">
+  <header>
+    <div class="logo">👑 𝐿𝓊𝓃𝒶𝓇𝒾𝓈</div>
+    <p class="intro" data-lang="ru">Мы — клан Lunaris. Играть на победу — наша цель, каждый матч — шаг к успеху.</p>
+    <p class="intro" data-lang="en">We are Lunaris Clan. Playing to win — every match is a step toward success.</p>
+  </header>
 
-  <div class="tip">
-    <p><strong>Для подачи заявки напишите одному из лидеров в Telegram и укажите:</strong></p>
-    <ul>
-      <li>1. Ваше имя:</li>
-      <li>2. Ваш ID:</li>
-      <li>4. Ваш возраст:</li>
-      <li>5. Ваш ранг:</li>
-      <li>6. Скриншот вашего профиля:</li>
-    </ul>
-    <div style="text-align:center; margin-top:20px;">
-      <a href="https://t.me/imroman23" target="_blank" class="btn">
-        <img src="https://files.kick.com/images/channel-links/1690282/image/34b4cf7f-dcc6-4972-87e6-7fc66f9f4ab5" alt="Telegram" /> Написать kenny
-      </a>
-      <a href="https://t.me/ikona_freak" target="_blank" class="btn">
-        <img src="https://files.kick.com/images/channel-links/1690282/image/34b4cf7f-dcc6-4972-87e6-7fc66f9f4ab5" alt="Telegram" /> Написать ikona
-      </a>
+  <main>
+    <section class="block">
+      <h2 data-lang="ru">🏆 Достижения</h2>
+      <h2 data-lang="en">🏆 Achievements</h2>
+      <div class="achievement" data-lang="ru">1 место на турнире MoonCup 2024</div>
+      <div class="achievement" data-lang="en">1st place in MoonCup 2024</div>
+      <div class="achievement" data-lang="ru">Лучший снайпер сезона — MoonStriker</div>
+      <div class="achievement" data-lang="en">Best sniper of the season — MoonStriker</div>
+    </section>
+
+    <section class="block">
+      <h2 data-lang="ru">🎯 Главный состав клана</h2>
+      <h2 data-lang="en">🎯 Main Clan Line-up</h2>
+      <div class="members">
+        <!-- kenny -->
+        <div class="member leader">
+          <img src="https://avatanplus.com/files/resources/original/5e1ef0bc86c2916fa8dc6088.png" alt="kenny">
+          <div>
+            <strong><a href="https://t.me/imroman23" target="_blank">🫅kenny</a></strong><br/>Leader 1️⃣
+          </div>
+        </div>
+        <!-- ikona -->
+        <div class="member leader">
+          <img src="https://avatanplus.com/files/resources/original/5e1ef0bc8fea316fa8dc60ad.png" alt="ikona">
+          <div>
+            <strong><a href="https://t.me/ikona_freak" target="_blank">🫅ikona</a></strong><br/>Leader 2️⃣
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 data-lang="ru">📥 Как вступить в 𝐿𝓊𝓃𝒶𝓇𝒾𝓈?</h2>
+      <h2 data-lang="en">📥 How to join 𝐿𝓊𝓃𝒶𝓇𝒾𝓈?</h2>
+      <div class="tip" data-lang="ru">
+        <p><strong>Требования:</strong></p>
+        <ul>
+          <li>Ранг от Ренджера</li>
+          <li>Возраст от 14 лет</li>
+          <li>Адекватность</li>
+          <li>Онлайн</li>
+          <li>Telegram и микрофон</li>
+        </ul>
+      </div>
+      <div class="tip" data-lang="en">
+        <p><strong>Requirements:</strong></p>
+        <ul>
+          <li>Rank: Ranger+</li>
+          <li>Age: 14+</li>
+          <li>Maturity & clear communication</li>
+          <li>Consistent play time</li>
+          <li>Telegram & mic</li>
+        </ul>
+      </div>
+      <div class="cta">
+        <a href="https://t.me/imroman23" target="_blank" class="btn">
+          <img src="https://files.kick.com/images/channel-links/1690282/image/34b4cf7f-dcc6-4972-87e6-7fc66f9f4ab5" alt="Telegram" /> Kenny
+        </a>
+        <a href="https://t.me/ikona_freak" target="_blank" class="btn">
+          <img src="https://files.kick.com/images/channel-links/1690282/image/34b4cf7f-dcc6-4972-87e6-7fc66f9f4ab5" alt="Telegram" /> Ikona
+        </a>
+      </div>
+    </section>
+
+    <!-- Полочка -->
+    <div class="divider">
+      <hr />
+      <span>🔗</span>
+      <hr />
     </div>
-  </div>
-</section>
 
-<section>
-  <h2>🌐 Наши соцсети</h2>
-  <div class="socials">
-    <a href="https://t.me/LunarisSo2" target="_blank">
-      <img src="https://files.kick.com/images/channel-links/1690282/image/34b4cf7f-dcc6-4972-87e6-7fc66f9f4ab5" alt="Telegram">
-    </a>
-    <a href="https://www.tiktok.com/@__.roman.k" target="_blank">
-      <img src="https://gas-kvas.com/grafic/uploads/posts/2024-01/gas-kvas-com-p-znak-tik-toka-na-prozrachnom-fone-13.png" alt="TikTok">
-    </a>
-  </div>
-</section>
+    <section class="block">
+      <h2 data-lang="ru">🌐 Наши соцсети</h2>
+      <h2 data-lang="en">🌐 Our Socials</h2>
+      <div class="socials">
+        <a href="https://t.me/LunarisSo2" target="_blank">
+          <img src="https://files.kick.com/images/channel-links/1690282/image/34b4cf7f-dcc6-4972-87e6-7fc66f9f4ab5" alt="Telegram">
+        </a>
+        <a href="https://www.tiktok.com/@__.roman.k" target="_blank">
+          <img src="https://i.pinimg.com/originals/44/39/96/443996b5da3f9369964f553d65395fa2.png" alt="TikTok">
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  function setLanguage(lang) {
+    document.getElementById("welcome-screen").classList.add("hide");
+    document.getElementById("site-content").style.display = "block";
+    document.querySelectorAll("[data-lang]").forEach(el => {
+      el.style.display = el.getAttribute("data-lang") === lang ? "" : "none";
+    });
+  }
+</script>
 
 </body>
 </html>
