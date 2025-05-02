@@ -1,223 +1,298 @@
 /* Основной стиль */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: #f1f5f9;
-    line-height: 1.6;
-    padding-bottom: 60px;
-  }
-  
-  header {
-    text-align: center;
-    padding: 40px 20px;
-    background: #111827;
-    animation: fadeIn 1s ease-out;
-  }
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f1f5f9;
+  line-height: 1.6;
+  padding-bottom: 60px;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: #111827;
+  animation: fadeIn 1s ease-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 15px #3b82f6;
+  animation: glow 2s infinite alternate;
+}
+
+.intro {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 20px auto 0;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  transition: opacity 0.5s ease;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* Анимация появления блока */
+.block {
+  margin-top: 50px;
+  opacity: 0;
+  animation: fadeInUp 2s ease-out forwards;
+}
+
+/* Заголовки */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #e2e8f0;
+  animation: fadeIn 2s ease-out;
+}
+
+.achievement, .tip, .member {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.achievement:hover,
+.tip:hover,
+.member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  background: rgba(59, 130, 246, 0.1);  /* Плавный эффект при наведении */
+}
+
+.members {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.member {
+  text-align: center;
+  position: relative;
+  width: 160px;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.member img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #94a3b8;
+  margin-bottom: 8px;
+  filter: brightness(0.9);  /* Сделаем чуть темнее */
+  transition: filter 0.3s ease;
+}
+
+.member img:hover {
+  filter: brightness(1.1); /* Яркость при наведении */
+}
+
+.leader img {
+  border-color: gold;
+}
+
+.leader::after {
+  content: "👑";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 20px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  background: #3b82f6;
+  color: #fff;
+  padding: 12px 20px;
+  margin: 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  gap: 8px;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #60a5fa;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+}
+
+.btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.cta {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.socials img {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 0 6px #3b82f6);
+  transition: transform 0.3s, filter 0.3s ease;
+}
+
+.socials img:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 10px #60a5fa);
+}
+
+/* Приветствие */
+#welcome-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.welcome-content {
+  text-align: center;
+  animation: slideIn 1.3s ease-out;
+}
+
+.welcome-content h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeInUp 2s ease-out forwards;
+}
+
+.language-buttons button {
+  margin: 10px;
+  padding: 12px 24px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.language-buttons button:hover {
+  background: #60a5fa;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+#welcome-screen.hide {
+  animation: fadeOut 0.8s ease forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Дивайдер */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 50px 0;
+}
+
+.divider hr {
+  flex: 1;
+  border: none;
+  height: 1px;
+  background: #64748b;
+}
+
+.divider span {
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
   .logo {
-    font-size: 48px;
-    font-weight: bold;
-    color: #ffffff;
-    text-shadow: 0 0 15px #3b82f6;
-    animation: glow 2s infinite alternate;
+      font-size: 36px;
   }
-  
+
   .intro {
-    font-size: 18px;
-    max-width: 600px;
-    margin: 20px auto 0;
+      font-size: 16px;
+      padding: 0 10px;
   }
-  
-  main {
-    max-width: 1000px;
-    margin: auto;
-    padding: 0 20px;
-  }
-  
-  .block {
-    margin-top: 50px;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 24px;
-    color: #e2e8f0;
-  }
-  
-  .achievement, .tip, .member {
-    background: rgba(255,255,255,0.05);
-    padding: 15px;
-    margin: 10px auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease;
-  }
-  
-  .achievement:hover,
-  .tip:hover,
-  .member:hover {
-    transform: translateY(-5px);
-  }
-  
-  .members {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-  
-  .member {
-    text-align: center;
-    position: relative;
-    width: 160px;
-  }
-  
-  .member img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #94a3b8;
-    margin-bottom: 8px;
-  }
-  
-  .leader img {
-    border-color: gold;
-  }
-  
-  .leader::after {
-    content: "👑";
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    font-size: 20px;
-  }
-  
+
   .btn {
-    display: inline-flex;
-    align-items: center;
-    background: #3b82f6;
-    color: #fff;
-    padding: 10px 20px;
-    margin: 8px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 15px;
-    gap: 8px;
-    box-shadow: 0 6px 16px rgba(59,130,246,0.4);
-    transition: all 0.3s;
+      padding: 10px 16px;
+      font-size: 14px;
   }
-  
-  .btn:hover {
-    background: #60a5fa;
-    transform: translateY(-2px);
+
+  .members {
+      flex-direction: column;
   }
-  
-  .btn img {
-    width: 18px;
-    height: 18px;
+}
+
+@media (max-width: 480px) {
+  header {
+      padding: 30px 10px;
   }
-  
+
+  .logo {
+      font-size: 28px;
+  }
+
+  .intro {
+      font-size: 14px;
+      padding: 0 10px;
+  }
+
+  .member img {
+      width: 60px;
+      height: 60px;
+  }
+
   .cta {
-    text-align: center;
-    margin-top: 20px;
+      font-size: 14px;
   }
-  
-  .socials {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-  }
-  
-  .socials img {
-    width: 60px;
-    height: 60px;
-    filter: drop-shadow(0 0 6px #3b82f6);
-    transition: transform 0.3s, filter 0.3s;
-  }
-  
-  .socials img:hover {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 10px #60a5fa);
-  }
-  
-  /* Приветствие */
-  #welcome-screen {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 1.2s ease-out;
-  }
-  
-  .welcome-content {
-    text-align: center;
-    animation: slideIn 1.3s ease-out;
-  }
-  
-  .welcome-content h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  .language-buttons button {
-    margin: 10px;
-    padding: 12px 24px;
-    border: none;
-    background: #3b82f6;
-    color: white;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .language-buttons button:hover {
-    background: #60a5fa;
-  }
-  
-  #welcome-screen.hide {
-    animation: fadeOut 0.8s ease forwards;
-  }
-  
-  @keyframes slideIn {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  
-  @keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-  }
-  
-  .divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 50px 0;
-  }
-  
-  .divider hr {
-    flex: 1;
-    border: none;
-    height: 1px;
-    background: #64748b;
-  }
-  
-  .divider span {
-    color: #94a3b8;
-    font-size: 18px;
-  }
-  
+}
