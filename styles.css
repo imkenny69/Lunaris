@@ -1,4 +1,4 @@
-/* Основной стиль */
+/* Сброс и базовые стили */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,6 +15,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Хедер */
 header {
   text-align: center;
   padding: 40px 20px;
@@ -31,22 +32,27 @@ header {
   animation: glow 2s infinite alternate;
 }
 
+@keyframes glow {
+  from { text-shadow: 0 0 10px #3b82f6; }
+  to { text-shadow: 0 0 20px #60a5fa; }
+}
+
 .intro {
   font-size: 18px;
   max-width: 600px;
   margin: 20px auto 0;
   opacity: 0;
   animation: fadeIn 2s forwards;
-  transition: opacity 0.5s ease;
 }
 
+/* Основной блок */
 main {
   max-width: 1000px;
   margin: auto;
   padding: 0 20px;
 }
 
-/* Анимация появления блока */
+/* Секции */
 .block {
   margin-top: 50px;
   opacity: 0;
@@ -62,6 +68,7 @@ h2 {
   animation: fadeIn 2s ease-out;
 }
 
+/* Элементы достижений, требований, состава */
 .achievement, .tip, .member {
   background: rgba(255, 255, 255, 0.05);
   padding: 15px;
@@ -76,7 +83,7 @@ h2 {
 .member:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
-  background: rgba(59, 130, 246, 0.1);  /* Плавный эффект при наведении */
+  background: rgba(59, 130, 246, 0.1);
 }
 
 .members {
@@ -101,12 +108,12 @@ h2 {
   object-fit: cover;
   border: 3px solid #94a3b8;
   margin-bottom: 8px;
-  filter: brightness(0.9);  /* Сделаем чуть темнее */
+  filter: brightness(0.9);
   transition: filter 0.3s ease;
 }
 
 .member img:hover {
-  filter: brightness(1.1); /* Яркость при наведении */
+  filter: brightness(1.1);
 }
 
 .leader img {
@@ -121,6 +128,7 @@ h2 {
   font-size: 20px;
 }
 
+/* Кнопки */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -133,13 +141,12 @@ h2 {
   font-size: 15px;
   gap: 8px;
   box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
-  transition: all 0.3s ease;
 }
 
 .btn:hover {
   background: #60a5fa;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .btn img {
@@ -152,6 +159,7 @@ h2 {
   margin-top: 20px;
 }
 
+/* Соцсети */
 .socials {
   display: flex;
   justify-content: center;
@@ -171,7 +179,7 @@ h2 {
   filter: drop-shadow(0 0 10px #60a5fa);
 }
 
-/* Приветствие */
+/* Приветственный экран */
 #welcome-screen {
   position: fixed;
   inset: 0;
@@ -217,21 +225,42 @@ h2 {
   animation: fadeOut 0.8s ease forwards;
 }
 
-@keyframes slideIn {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+/* Анимации */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
-@keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeInUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* Дивайдер */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Разделитель */
 .divider {
   display: flex;
   align-items: center;
@@ -255,44 +284,50 @@ h2 {
 /* Адаптивность */
 @media (max-width: 768px) {
   .logo {
-      font-size: 36px;
+    font-size: 36px;
   }
 
   .intro {
-      font-size: 16px;
-      padding: 0 10px;
+    font-size: 16px;
+    padding: 0 10px;
   }
 
   .btn {
-      padding: 10px 16px;
-      font-size: 14px;
+    padding: 10px 16px;
+    font-size: 14px;
   }
 
   .members {
-      flex-direction: column;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 @media (max-width: 480px) {
   header {
-      padding: 30px 10px;
+    padding: 30px 10px;
   }
 
   .logo {
-      font-size: 28px;
+    font-size: 28px;
   }
 
   .intro {
-      font-size: 14px;
-      padding: 0 10px;
+    font-size: 14px;
+    padding: 0 10px;
   }
 
   .member img {
-      width: 60px;
-      height: 60px;
+    width: 60px;
+    height: 60px;
   }
 
   .cta {
-      font-size: 14px;
+    font-size: 14px;
+  }
+
+  .language-buttons button {
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }

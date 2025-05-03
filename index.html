@@ -32,8 +32,8 @@
 
   <main>
     <section class="block">
-      <h2 data-lang="ru">🏆 Достижения</h2>
-      <h2 data-lang="en">🏆 Achievements</h2>
+      <h2 class="heading" data-lang="ru">🏆 Достижения</h2>
+      <h2 class="heading" data-lang="en">🏆 Achievements</h2>
       <div class="achievement" data-lang="ru">1 место на турнире MoonCup 2024</div>
       <div class="achievement" data-lang="en">1st place in MoonCup 2024</div>
       <div class="achievement" data-lang="ru">Лучший снайпер сезона — MoonStriker</div>
@@ -41,17 +41,15 @@
     </section>
 
     <section class="block">
-      <h2 data-lang="ru">🎯 Главный состав клана</h2>
-      <h2 data-lang="en">🎯 Main Clan Line-up</h2>
+      <h2 class="heading" data-lang="ru">🎯 Главный состав клана</h2>
+      <h2 class="heading" data-lang="en">🎯 Main Clan Line-up</h2>
       <div class="members">
-        <!-- kenny -->
         <div class="member leader">
           <img src="https://avatanplus.com/files/resources/original/5e1ef0bc86c2916fa8dc6088.png" alt="kenny">
           <div>
             <strong><a href="https://t.me/imroman23" target="_blank">🫅kenny</a></strong><br/>Leader 1️⃣
           </div>
         </div>
-        <!-- ikona -->
         <div class="member leader">
           <img src="https://avatanplus.com/files/resources/original/5e1ef0bc8fea316fa8dc60ad.png" alt="ikona">
           <div>
@@ -62,8 +60,8 @@
     </section>
 
     <section class="block">
-      <h2 data-lang="ru">📥 Как вступить в 𝐿𝓊𝓃𝒶𝓇𝒾𝓈?</h2>
-      <h2 data-lang="en">📥 How to join 𝐿𝓊𝓃𝒶𝓇𝒾𝓈?</h2>
+      <h2 class="heading" data-lang="ru">📥 Как вступить в 𝐿𝓊𝓃𝒶𝓇𝒾𝓈?</h2>
+      <h2 class="heading" data-lang="en">📥 How to join 𝐿𝓊𝓃𝒶𝓇𝒾𝓈?</h2>
       <div class="tip" data-lang="ru">
         <p><strong>Требования:</strong></p>
         <ul>
@@ -102,8 +100,8 @@
     </div>
 
     <section class="block">
-      <h2 data-lang="ru">🌐 Наши соцсети</h2>
-      <h2 data-lang="en">🌐 Our Socials</h2>
+      <h2 class="heading" data-lang="ru">🌐 Наши соцсети</h2>
+      <h2 class="heading" data-lang="en">🌐 Our Socials</h2>
       <div class="socials">
         <a href="https://t.me/LunarisSo2" target="_blank">
           <img src="https://files.kick.com/images/channel-links/1690282/image/34b4cf7f-dcc6-4972-87e6-7fc66f9f4ab5" alt="Telegram">
@@ -118,12 +116,25 @@
 
 <script>
   function setLanguage(lang) {
+    localStorage.setItem("lang", lang);
     document.getElementById("welcome-screen").classList.add("hide");
-    document.getElementById("site-content").style.display = "block";
-    document.querySelectorAll("[data-lang]").forEach(el => {
-      el.style.display = el.getAttribute("data-lang") === lang ? "" : "none";
-    });
+
+    setTimeout(() => {
+      document.getElementById("welcome-screen").style.display = "none";
+      document.getElementById("site-content").style.display = "block";
+
+      document.querySelectorAll("[data-lang]").forEach(el => {
+        el.style.display = el.getAttribute("data-lang") === lang ? "" : "none";
+      });
+    }, 800); // подождать, пока отработает fadeOut
   }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("lang");
+    if (savedLang) {
+      setLanguage(savedLang);
+    }
+  });
 </script>
 
 </body>
